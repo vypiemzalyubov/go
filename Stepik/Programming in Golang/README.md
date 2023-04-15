@@ -1,5 +1,5 @@
-# Golang
+# Программирование на Golang
 
 <div id="header" align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Go_Logo_Blue.svg/1280px-Go_Logo_Blue.svg.png" width="100"/>
+  <img src="https://stepik.org/media/cache/images/courses/54403/cover_WbpGB1i/de4cf5c70c9ada8652c65e6d19913fe9.png" width="100"/>
 </div>
