@@ -729,7 +729,7 @@ default: fmt.Println("Unknown Number")
    ```
 </details>
 
-<details><summary><b>Циклы</b></summary>
+<details><summary><b>1.9 Циклы</b></summary>
 
 <h4>Циклы в Go</h4>
 
