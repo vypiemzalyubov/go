@@ -831,6 +831,7 @@ for i := 1; i <= 9; i++{
 }
 fmt.Println("Сумма: ", sum)    // Сумма: 10
 ```
+</details>
 
 <details><summary><b>1.10 Форматированный вывод</b></summary>
 
