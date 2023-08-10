@@ -1,4 +1,4 @@
-## Go Cheat Sheet
+## Go CheatSheet
 
 - [Введение в программирование на Go](http://golang-book.ru/)
 - [Уроки для изучения Golang](https://golangify.com/)
@@ -7,3 +7,4 @@
 - [Зачем в Go амперсанд и звёздочка (& и *)?](https://habr.com/ru/articles/339192/)
 - [Полное руководство по массивам и срезам в Golang](https://habr.com/ru/companies/otus/articles/465613/)
 - [Изучаем многопоточное программирование в Go по картинкам](https://habr.com/ru/articles/412715/)
+- [Профилирование и оптимизация веб-приложений на Go](https://habr.com/ru/companies/badoo/articles/324682/)
