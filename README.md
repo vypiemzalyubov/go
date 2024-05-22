@@ -6,6 +6,6 @@
 
 ---
 
-[**Stepik**](https://github.com/vypiemzalyubov/go/tree/main/Stepik)
+- [**Stepik**](https://github.com/vypiemzalyubov/go/tree/main/Stepik)
   - [**PRO Go. Programming basics | PRO Go. Основы программирования**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics)
   - [**Programming in Golang | Программирование на Golang**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/Programming%20in%20Golang)
