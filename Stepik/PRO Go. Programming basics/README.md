@@ -10,3 +10,4 @@
 
 - [**Введение**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/1.%20Introduction)
 - [**Типы данных. Переменные**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/2.%20Data%20Types.%20Variables)
+- [**Условный оператор**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/3.%20Conditional%20operator)
