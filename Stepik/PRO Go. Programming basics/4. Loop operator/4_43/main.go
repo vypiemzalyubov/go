@@ -13,17 +13,20 @@ import (
 )
 
 func main() {
-	var n, tmp int
-	_, _ = fmt.Scan(&n, &tmp)
-	minD := tmp
+	n, number, cnt := 0, 0, 0
+	_, _ = fmt.Scan(&n, &number)
+	minD := number
 
-	for i := 0; i <= n; i++ {
-		_, _ = fmt.Scan(&tmp)
+	for i := 0; i < n; i++ {
+		_, _ = fmt.Scan(&number)
 
-		if tmp < minD {
-			minD = tmp
+		if number < minD {
+			minD = number
+			cnt = 1
+		} else if number == minD {
+			cnt++
 		}
 	}
 
-	fmt.Print(minD)
+	fmt.Print(cnt)
 }
