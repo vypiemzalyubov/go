@@ -12,3 +12,4 @@
 - [**Типы данных. Переменные**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/2.%20Data%20Types.%20Variables)
 - [**Условный оператор**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/3.%20Conditional%20operator)
 - [**Оператор цикла**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/4.%20Loop%20operator)
+- [**Коллекции (массив, слайс)**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/5.%20Collections%20(array%2C%20slice))
