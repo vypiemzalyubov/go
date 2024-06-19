@@ -23,7 +23,7 @@ func main() {
 		_, _ = fmt.Scan(&array[i])
 	}
 
-	for i := 0; i < n/2; i++ {
+	for i := 0; i < n; i++ {
 		if array[i] == array[n-1-i] {
 			flag = true
 		} else {
