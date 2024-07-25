@@ -14,3 +14,4 @@
 - [**Оператор цикла**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/4.%20Loop%20operator)
 - [**Коллекции (массив, слайс)**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/5.%20Collections%20(array%2C%20slice))
 - [**Строки и символы**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/6.%20Strings%20and%20symbols)
+- [**Функции**](https://github.com/vypiemzalyubov/go/tree/main/Stepik/PRO%20Go.%20Programming%20basics/7.%20Functions)
