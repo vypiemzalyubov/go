@@ -1,7 +1,11 @@
 ## Go CheatSheet
 
+- [A Tour of Go](https://go.dev/tour/welcome/1)
 - [Введение в программирование на Go](http://golang-book.ru/)
 - [Уроки для изучения Golang](https://golangify.com/)
+- [Go by Example](https://gobyexample.com/)
+
+#### Полезные материалы
 - [Хаб Go](https://habr.com/ru/hub/go/)
 - [50 оттенков Go: ловушки, подводные камни и распространённые ошибки новичков](https://habr.com/ru/companies/vk/articles/314804/)
 - [Зачем в Go амперсанд и звёздочка (& и *)?](https://habr.com/ru/articles/339192/)
@@ -9,7 +13,7 @@
 - [Изучаем многопоточное программирование в Go по картинкам](https://habr.com/ru/articles/412715/)
 - [Профилирование и оптимизация веб-приложений на Go](https://habr.com/ru/companies/badoo/articles/324682/)
 
-**Automation**
+#### Automation
 - [Test with Go](https://testwithgo.com/)
 - [Автоматизация тестов на Go + Allure](https://habr.com/ru/companies/vivid_money/articles/566940/)
 - [Пишем gRPC автотесты на Go с Allure отчетом](https://habr.com/ru/articles/736502/)
