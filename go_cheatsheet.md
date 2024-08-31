@@ -4,6 +4,8 @@
 - [Введение в программирование на Go](http://golang-book.ru/)
 - [Уроки для изучения Golang](https://golangify.com/)
 - [Go by Example](https://gobyexample.com/)
+- [Уроки Go(Golang) | BRO-IT](https://www.youtube.com/playlist?list=PLgG7lPwNdp57aUoqLpR0Rk7Q5v4dFHsjg)
+- [Уроки по Golang | The Art of Development](https://www.youtube.com/playlist?list=PLP19RjSHH4aE9pB77yT1PbXzftGsXFiGl)
 
 #### Полезные материалы
 - [Хаб Go](https://habr.com/ru/hub/go/)
