@@ -15,6 +15,7 @@
 - [Полное руководство по массивам и срезам в Golang](https://habr.com/ru/companies/otus/articles/465613/)
 - [Изучаем многопоточное программирование в Go по картинкам](https://habr.com/ru/articles/412715/)
 - [Профилирование и оптимизация веб-приложений на Go](https://habr.com/ru/companies/badoo/articles/324682/)
+- [Стандартный макет Go проекта](https://github.com/golang-standards/project-layout/blob/master/README_ru.md)
 
 #### Automation
 - [Test with Go](https://testwithgo.com/)
