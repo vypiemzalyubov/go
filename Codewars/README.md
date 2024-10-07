@@ -17,4 +17,4 @@
 ---
 
 ### 8 kyu:
-- [Do I get a bonus?](https://github.com/vypiemzalyubov/python/blob/main/Codewars/8%20kyu/a_needle_in_the_haystack.py)
+- [Do I get a bonus?](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/do_i_get_a_bonus.go)
