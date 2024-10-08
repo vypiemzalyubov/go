@@ -19,4 +19,5 @@
 ### 8 kyu:
 - [Counting sheep...](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/counting_sheep.go)
 - [Do I get a bonus?](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/do_i_get_a_bonus.go)
+- [Reversed Words](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/reversed_words.go)
 - [Total amount of points](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/total_amount_of_points.go)
