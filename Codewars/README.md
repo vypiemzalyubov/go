@@ -12,9 +12,12 @@
 
 ### Navigation:
 
-[8 kyu](https://github.com/vypiemzalyubov/python/tree/main/Codewars#8-kyu)
+[7 kyu](https://github.com/vypiemzalyubov/python/tree/main/Codewars#7-kyu) | [8 kyu](https://github.com/vypiemzalyubov/python/tree/main/Codewars#8-kyu)
 
 ---
+
+### 7 kyu:
+- [Simple string characters](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/simple_string_characters.go)
 
 ### 8 kyu:
 - [Counting sheep...](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/counting_sheep.go)
