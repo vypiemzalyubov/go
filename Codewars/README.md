@@ -12,7 +12,7 @@
 
 ### Navigation:
 
-[7 kyu](https://github.com/vypiemzalyubov/python/tree/main/Codewars#7-kyu) | [8 kyu](https://github.com/vypiemzalyubov/python/tree/main/Codewars#8-kyu)
+[7 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#7-kyu) | [8 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#8-kyu)
 
 ---
 
