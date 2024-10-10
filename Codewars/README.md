@@ -12,9 +12,12 @@
 
 ### Navigation:
 
-[7 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#7-kyu) | [8 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#8-kyu)
+[6 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#6-kyu) | [7 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#7-kyu) | [8 kyu](https://github.com/vypiemzalyubov/go/tree/main/Codewars#8-kyu)
 
 ---
+
+### 6 kyu:
+- [IP Validation]()
 
 ### 7 kyu:
 - [Simple string characters](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/simple_string_characters.go)
