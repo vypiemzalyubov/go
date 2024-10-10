@@ -17,7 +17,7 @@
 ---
 
 ### 6 kyu:
-- [IP Validation]()
+- [IP Validation](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/ip_validation.go)
 
 ### 7 kyu:
 - [Simple string characters](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/simple_string_characters.go)
