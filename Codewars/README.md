@@ -21,6 +21,7 @@
 
 ### 7 kyu:
 - [Count the divisors of a number](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/count_the_divisors_of_a_number.go)
+- [Indexed capitalization](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/indexed_capitalization.go)
 - [Simple string characters](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/simple_string_characters.go)
 - [V A P O R C O D E](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/vaporcode.go)
 
