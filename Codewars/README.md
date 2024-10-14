@@ -17,6 +17,7 @@
 ---
 
 ### 6 kyu:
+- [Find The Parity Outlier](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/find_the_parity_outlier.go)
 - [IP Validation](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/ip_validation.go)
 
 ### 7 kyu:
