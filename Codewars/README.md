@@ -18,6 +18,7 @@
 
 ### 6 kyu:
 - [Find The Parity Outlier](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/find_the_parity_outlier.go)
+- [Find the unique number](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/find_the_unique_number.go)
 - [IP Validation](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/ip_validation.go)
 - [Make the Deadfish Swim](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/make_the_deadfish_swim.go)
 - [Sum of Digits / Digital Root](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/sum_of_digits_digital_root.go)
