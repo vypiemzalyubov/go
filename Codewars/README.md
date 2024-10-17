@@ -28,6 +28,7 @@
 - [V A P O R C O D E](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/vaporcode.go)
 
 ### 8 kyu:
+- [Sum of positive](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/%20sum_of_positive.go)
 - [Counting sheep...](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/counting_sheep.go)
 - [Do I get a bonus?](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/do_i_get_a_bonus.go)
 - [Return Negative](https://github.com/vypiemzalyubov/go/blob/main/Codewars/8%20kyu/return_negative.go)
