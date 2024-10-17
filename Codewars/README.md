@@ -19,6 +19,7 @@
 ### 6 kyu:
 - [Find The Parity Outlier](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/find_the_parity_outlier.go)
 - [IP Validation](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/ip_validation.go)
+- [Make the Deadfish Swim](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/make_the_deadfish_swim.go)
 
 ### 7 kyu:
 - [Count the divisors of a number](https://github.com/vypiemzalyubov/go/blob/main/Codewars/7%20kyu/count_the_divisors_of_a_number.go)
