@@ -24,7 +24,6 @@ func FindUniq(arr []float32) float32 {
 
 
 
-
 // Best Practices
 
 package kata
