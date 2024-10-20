@@ -19,6 +19,7 @@
 ### 6 kyu:
 - [Find The Parity Outlier](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/find_the_parity_outlier.go)
 - [Find the unique number](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/find_the_unique_number.go)
+- [Highest Rank Number in an Array](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/highest_rank_number_in_an_array.go)
 - [IP Validation](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/ip_validation.go)
 - [Is a number prime?](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/is_a_number_prime.go)
 - [Make the Deadfish Swim](https://github.com/vypiemzalyubov/go/blob/main/Codewars/6%20kyu/make_the_deadfish_swim.go)
