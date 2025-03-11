@@ -22,7 +22,6 @@ repos:
           - '.gitlab-ci.yml'
           - '--insecure'
           - '--private-token'
-          - '******'
 
   - repo: https://github.com/yoheimuta/protolint
     rev: v0.50.5
