@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/dnephin/pre-commit-golang
+    rev: v0.5.1
+    hooks:
+      - id: go-fmt
+      - id: go-imports
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-yaml
+        exclude: '.clang-format'
+
+  - repo: https://gitlab.com/devopshq/gitlab-ci-linter
+    rev: v1.0.6
+    hooks:
+      - id: gitlab-ci-linter
+        args:
+          - '--server'
+          - 'https://gitlab.ozon.dev'
+          - '--filename'
+          - '.gitlab-ci.yml'
+          - '--insecure'
+          - '--private-token'
+          - 'glpat-7vun2SVwwQcfoaAT-Eh8'
+
+  - repo: https://github.com/yoheimuta/protolint
+    rev: v0.50.5
+    hooks:
+      - id: protolint
+        exclude: 'api/wallet/.*'

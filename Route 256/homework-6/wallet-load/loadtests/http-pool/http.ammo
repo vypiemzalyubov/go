@@ -1,0 +1,11 @@
+{"tag":"CollectOperation", "uri":"/api/v1/collect_operation", "method":"GET", "headers":{"accept":"application/json"}}
+{"tag":"CollectOperation", "uri":"/api/v1/collect_operation_force", "method":"GET", "headers":{"accept":"application/json"}}
+{"tag":"GetUserInfo", "uri": "/api/v1/users/c222efaa-f7c1-4950-8570-2bcefd237a8d", "method":"GET", "headers":{"authorization": "609e6708-899d-4f25-8470-d96416ce8a2f","accept": "application/json"}}
+{"tag":"GetAccountBalance", "uri":"/api/v1/users/c222efaa-f7c1-4950-8570-2bcefd237a8d/accounts/cad72d8b-3bbd-4de4-96b9-dd7c897db4df/balance", "method":"GET", "headers":{"authorization":"609e6708-899d-4f25-8470-d96416ce8a2f","accept":"application/json"}}
+{"tag":"GetUserInfo", "uri": "/api/v1/users/a107756c-ae73-467c-bdca-a09ce3c7e46e", "method":"GET", "headers":{"authorization": "fdcefa51-6ed4-4fa2-9915-93988aae6c9d","accept": "application/json"}}
+{"tag":"GetAccountBalance", "uri":"/api/v1/users/a107756c-ae73-467c-bdca-a09ce3c7e46e/accounts/e4a23df4-d234-4ca8-8e9d-81fe99a376b4/balance", "method":"GET", "headers":{"authorization":"fdcefa51-6ed4-4fa2-9915-93988aae6c9d","accept":"application/json"}}
+{"tag":"GetUserInfo", "uri": "/api/v1/users/fake", "method":"GET", "headers":{"authorization": "609e6708-899d-4f25-8470-d96416ce8a2f","accept": "application/json"}}
+{"tag":"GetUserInfo", "uri": "/api/v1/users/c222efaa-f7c1-4950-8570-2bcefd237a8d", "method":"GET", "headers":{"accept": "application/json"}}
+{"tag":"GetAccountBalance", "uri":"/api/v1/users/fake/accounts/cad72d8b-3bbd-4de4-96b9-dd7c897db4df/balance", "method":"GET", "headers":{"authorization":"609e6708-899d-4f25-8470-d96416ce8a2f","accept":"application/json"}}
+{"tag":"GetAccountBalance", "uri":"/api/v1/users/c222efaa-f7c1-4950-8570-2bcefd237a8d/accounts/fake/balance", "method":"GET", "headers":{"authorization":"609e6708-899d-4f25-8470-d96416ce8a2f","accept":"application/json"}}
+{"tag":"GetAccountBalance", "uri":"/api/v1/users/c222efaa-f7c1-4950-8570-2bcefd237a8d/accounts/cad72d8b-3bbd-4de4-96b9-dd7c897db4df/balance", "method":"GET", "headers":{"accept":"application/json"}}

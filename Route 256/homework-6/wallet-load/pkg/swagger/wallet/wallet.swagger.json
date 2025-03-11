@@ -1,0 +1,809 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "wallet/wallet.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Wallet"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/cbr/rates": {
+      "post": {
+        "summary": "Ходит на сайт cbr.ru и возвращает курсы валют",
+        "operationId": "Wallet_GetExchangeRates",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetExchangeRatesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletGetExchangeRatesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/collect_operation": {
+      "get": {
+        "summary": "CollectOperation сбор количества операций в системе",
+        "operationId": "Wallet_CollectOperation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletOperationCountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/collect_operation_force": {
+      "get": {
+        "summary": "ForceCollectOperation запуск сбора в обход работы воркера",
+        "operationId": "Wallet_ForceCollectOperation",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletForceOperationCountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/kafka/consume": {
+      "post": {
+        "summary": "Создаёт kafka сообщение на операцию с кошельком с внешним ID",
+        "operationId": "Wallet_Consume",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletConsumeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletConsumeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/kafka/produce": {
+      "post": {
+        "summary": "Создаёт kafka сообщение на операцию с кошельком с внешним ID",
+        "operationId": "Wallet_Produce",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletProduceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletProduceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/login": {
+      "post": {
+        "summary": "Авторизация",
+        "operationId": "Wallet_LogIn",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletLogInResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletLogInRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/users": {
+      "post": {
+        "summary": "Создать пользователя",
+        "operationId": "Wallet_CreateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreateUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/walletCreateUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/api/v1/users/{userId}": {
+      "get": {
+        "summary": "Получить инфу по пользователю",
+        "operationId": "Wallet_GetUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletGetUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/accounts": {
+      "post": {
+        "summary": "Создать счет",
+        "operationId": "Wallet_CreateAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreateAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/accounts/{accountId}/balance": {
+      "get": {
+        "summary": "Получить инфу по балансу",
+        "operationId": "Wallet_GetAccountBalance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletAccountBalanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/accounts/{accountId}/credit": {
+      "post": {
+        "summary": "Списание денег",
+        "operationId": "Wallet_Credit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletCreditResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "operationId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/accounts/{accountId}/debit": {
+      "post": {
+        "summary": "Поступление денег",
+        "operationId": "Wallet_Debit",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletDebitResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "operationId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/upgrade": {
+      "post": {
+        "summary": "Повысить уровень идентификации пользователя",
+        "operationId": "Wallet_UpgradeUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/walletUpgradeUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "Token": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "GetExchangeRatesResponseExchangeRate": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "walletAccountBalanceResponse": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletConsumeRequest": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletConsumeResponse": {
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/walletKafkaOperation"
+          }
+        }
+      }
+    },
+    "walletCreateAccountResponse": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "walletCreateUserRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "walletCreateUserResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/walletUser"
+        }
+      }
+    },
+    "walletCreditResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/walletOperationStatus"
+        }
+      }
+    },
+    "walletDebitResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/walletOperationStatus"
+        }
+      }
+    },
+    "walletForceOperationCountResponse": {
+      "type": "object"
+    },
+    "walletGetExchangeRatesRequest": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "walletGetExchangeRatesResponse": {
+      "type": "object",
+      "properties": {
+        "rates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/GetExchangeRatesResponseExchangeRate"
+          }
+        }
+      }
+    },
+    "walletGetUserResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/walletUser"
+        }
+      }
+    },
+    "walletIdentificationLevel": {
+      "type": "string",
+      "enum": [
+        "ANON",
+        "FULL"
+      ],
+      "default": "ANON"
+    },
+    "walletKafkaOperation": {
+      "type": "object",
+      "properties": {
+        "operationType": {
+          "$ref": "#/definitions/walletOperationType"
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string"
+        }
+      }
+    },
+    "walletLogInRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "walletLogInResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "walletOperationCountResponse": {
+      "type": "object",
+      "properties": {
+        "operationsCount": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "walletOperationStatus": {
+      "type": "string",
+      "enum": [
+        "STATUS_UNDEFINED",
+        "STATUS_OK",
+        "STATUS_FAIL"
+      ],
+      "default": "STATUS_UNDEFINED"
+    },
+    "walletOperationType": {
+      "type": "string",
+      "enum": [
+        "TYPE_UNDEFINED",
+        "TYPE_DEBIT",
+        "TYPE_CREDIT"
+      ],
+      "default": "TYPE_UNDEFINED"
+    },
+    "walletProduceRequest": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "$ref": "#/definitions/walletKafkaOperation"
+        }
+      }
+    },
+    "walletProduceResponse": {
+      "type": "object"
+    },
+    "walletUpgradeUserResponse": {
+      "type": "object"
+    },
+    "walletUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "identificationLevel": {
+          "$ref": "#/definitions/walletIdentificationLevel"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Token": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

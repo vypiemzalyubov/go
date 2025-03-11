@@ -1,0 +1,7 @@
+Wallet:
+  port: 8002
+  host: localhost
+
+logger:
+  isDevMode: true
+  level: debug

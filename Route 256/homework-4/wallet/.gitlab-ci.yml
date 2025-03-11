@@ -1,0 +1,88 @@
+variables:
+  DOCKER_AUTH_CONFIG: '{"auths":{"gitlab.ozon.dev":{"username":"$CI_DEPENDENCY_PROXY_USER","password":"$CI_DEPENDENCY_PROXY_PASSWORD"}}}'
+  BASE_IMAGE_PATH: "gitlab.ozon.dev/qa/classroom-14/students/dependency_proxy/containers"
+  GO_VERSION: "1.22"
+  GOPATH: "${CI_PROJECT_DIR}/.cache/go"
+  GOCACHE: "${CI_PROJECT_DIR}/.cache/gocache"
+  GOLANGCI_TAG: "1.57.2"
+
+image: ${BASE_IMAGE_PATH}/golang:${GO_VERSION}-alpine
+
+stages:
+  - build
+  - publish
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - if: '$CI_COMMIT_TAG'
+      when: never
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "api"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - if: '$CI_PIPELINE_SOURCE == "webide"'
+    - if: '$CI_COMMIT_REF_NAME =~ /^((release|hotfix)\/.*)$/'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+build:
+  stage: build
+  before_script:
+    - apk add --update make curl git protoc protobuf protobuf-dev
+  script:
+    - make deps
+    - make build
+  artifacts:
+    paths:
+      - bin/
+    expire_in: 1 day
+
+linter:
+  stage: build
+  allow_failure: true
+  before_script:
+    - apk add --update make bash curl git protoc protobuf protobuf-dev build-base
+  script:
+    - make lint
+
+tests:
+  stage: build
+  services:
+    - name: ${BASE_IMAGE_PATH}/postgres
+      alias: postgres
+  variables:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_DB: wallet
+    POSTGRES_HOST_AUTH_METHOD: "trust"
+    PG_DSN_CI: "postgres://postgres:postgres@postgres:5432/wallet?sslmode=disable"
+  before_script:
+    - apk add --update make bash curl git protoc protobuf protobuf-dev build-base
+    - export GOPATH=${CI_PROJECT_DIR}/.cache/go
+    - export GOCACHE=${CI_PROJECT_DIR}/.cache/gocache
+    - export CC=gcc
+    - make bin-deps-test
+    - make db-up-ci
+  script:
+    - make test_ci
+  cache:
+    key: tests-$CI_COMMIT_REF_SLUG
+    policy: pull-push
+    paths:
+      - ".cache/go"
+      - ".cache/gocache"
+    when: always
+  coverage: '/^total:\s+\(statements\)\s+\d+.\d+%$/'
+  artifacts:
+    reports:
+      junit: unit-tests.xml
+
+create image:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/DockerFile" --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_BRANCH}"
+#  needs:
+#    - build

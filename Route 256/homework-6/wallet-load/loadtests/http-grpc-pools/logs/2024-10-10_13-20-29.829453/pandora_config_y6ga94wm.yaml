@@ -1,0 +1,57 @@
+monitoring:
+  expvar:
+    enabled: true
+pools:
+- ammo:
+    file: grpc.ammo
+    type: grpc/json
+  gun:
+    target: wallet:8002
+    type: grpc
+  id: gRPC pool
+  result:
+    destination: 0_phout.log
+    type: phout
+  rps:
+  - duration: 10m
+    from: 1
+    to: 360
+    type: line
+  - duration: 5m
+    ops: 360
+    type: const
+  - duration: 2m
+    from: 180
+    to: 360
+    type: line
+  startup:
+    times: 1000
+    type: once
+- ammo:
+    file: http.ammo
+    type: http/json
+  gun:
+    dial:
+      timeout: 2s
+    ssl: false
+    target: wallet:8001
+    type: http
+  id: HTTP pool
+  result:
+    destination: 1_phout.log
+    type: phout
+  rps:
+  - duration: 10m
+    from: 1
+    to: 360
+    type: line
+  - duration: 5m
+    ops: 360
+    type: const
+  - duration: 2m
+    from: 180
+    to: 360
+    type: line
+  startup:
+    times: 1000
+    type: once

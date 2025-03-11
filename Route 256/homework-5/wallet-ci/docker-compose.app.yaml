@@ -1,0 +1,101 @@
+version: "3.9"
+
+services:
+  wallet:
+    container_name: wallet
+    build:
+      context: .
+      dockerfile: DockerFile
+      cache_from:
+        - wallet-wallet:latest
+    environment:
+      PG_DSN: "host=postgres port=5432 dbname=wallet user=postgres password=postgres sslmode=disable"
+      KAFKA_CONSUME_TICK: "10s"
+      CBR_URL: "https://cbr.ru"
+    ports:
+      - "8002:8002" # gRPC
+      - "8001:8001" # REST
+      - "9100:9100" # Metrics prometheus
+      - "8000:8000" # Status prometheus
+    healthcheck:
+      test: [ 'CMD', 'curl', '-v', 'http://localhost:8000/live' ]
+      interval: 10s
+      timeout: 10s
+      retries: 2
+      start_period: 20s
+    networks:
+      - ompnw
+    depends_on:
+      - postgres
+      - pgboucer
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    restart: unless-stopped
+    logging:
+      driver: 'gelf'
+      options:
+        gelf-address: 'udp://localhost:12201'
+        tag: nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - ompnw
+    depends_on:
+      - wallet
+      - swagger-ui
+
+  swagger-ui:
+    container_name: swagger-ui
+    image: swaggerapi/swagger-ui:v4.10.3
+    restart: always
+    volumes:
+      - ./pkg/swagger:/swagger
+    environment:
+      SWAGGER_JSON: /swagger/wallet/wallet.swagger.json
+    networks:
+      - ompnw
+    depends_on:
+      - wallet
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.4
+    networks:
+      - ompnw
+    ports:
+      - "22181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.4.4
+    depends_on:
+      - zookeeper
+    networks:
+      - ompnw
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  redpanda:
+    image: docker.redpanda.com/redpandadata/console:latest
+    ports:
+      - "8090:8080"
+    networks:
+      - ompnw
+    environment:
+      KAFKA_BROKERS: kafka:9092
+
+networks:
+  ompnw:
+    driver: bridge

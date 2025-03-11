@@ -1,0 +1,242 @@
+variables:
+  DOCKER_AUTH_CONFIG: '{"auths":{"gitlab.ozon.dev":{"username":"$CI_DEPENDENCY_PROXY_USER","password":"$CI_DEPENDENCY_PROXY_PASSWORD"}}}'
+  BASE_IMAGE_PATH: "gitlab.ozon.dev/qa/classroom-14/students/dependency_proxy/containers"
+  GO_VERSION: "1.22"
+  GOPATH: "${CI_PROJECT_DIR}/.cache/go"
+  GOCACHE: "${CI_PROJECT_DIR}/.cache/gocache"
+  GOLANGCI_TAG: "1.57.2"
+
+image: ${BASE_IMAGE_PATH}/golang:${GO_VERSION}-alpine
+
+stages:
+  - build
+  - publish
+  - deploy
+  - e2e
+  - post-deploy
+  - canary
+  - close
+
+.base:
+  before_script:
+    - apk add --update make git build-base
+  rules:
+    - if: '$CI_COMMIT_TAG == null'
+      when: on_success
+    - when: never
+
+.e2e:
+  stage: e2e
+  extends: .base
+  services:
+    - name: ${BASE_IMAGE_PATH}/postgres
+      alias: postgres
+  variables:
+    POSTGRES_DB: wallet
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_HOST_AUTH_METHOD: "trust"
+    PG_DSN_CI: "postgres://postgres:postgres@postgres:5432/wallet?sslmode=disable"
+    E2E_TAG: "grpctest"
+  before_script:
+    - apk add --update make git build-base
+    - export GOPATH=${CI_PROJECT_DIR}/.cache/go
+    - export GOCACHE=${CI_PROJECT_DIR}/.cache/gocache
+    - export CC=gcc
+    - make bin-deps-test
+    - make db-up-ci
+    - PG_DSN=${PG_DSN_CI} ./bin/wallet &
+    - sleep 5
+  script:
+    - echo "E2E ${E2E_TAG} test"
+    - make e2e_ci tags=${E2E_TAG}
+  needs:
+    - build
+    - staging
+
+.default-rules:
+  rules:
+    - if: '$CI_COMMIT_TAG == null'
+    - when: never
+
+.tag-rules:
+  rules:
+    - if: '$CI_COMMIT_TAG'
+    - when: never
+
+.canary:
+  extends: .tag-rules
+  when: manual
+  script:
+    - echo "Canary $CANARY%"
+
+build:
+  stage: build
+  extends: .base
+  script:
+    - echo "Build..."
+    - make build
+  artifacts:
+    paths:
+      - ./bin
+    when: on_success
+    expire_in: 1 day
+
+linter:
+  stage: build
+  extends: .base
+  script:
+    - echo "Run linters"
+    - git fetch
+    - make lint-full
+
+pre-commit:
+  stage: build
+  image: ${BASE_IMAGE_PATH}/kiwicom/pre-commit
+  before_script:
+    - go install golang.org/x/tools/cmd/goimports@v0.1.5
+    - export PATH=$PATH:$(go env GOPATH)/bin
+  script:
+    - echo "Run pre-commit"
+    - pre-commit run -a
+  allow_failure: true
+  extends: .default-rules
+
+unit:
+  stage: build
+  extends: .base
+  services:
+    - name: ${BASE_IMAGE_PATH}/postgres
+      alias: postgres
+  variables:
+    POSTGRES_DB: wallet
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_HOST_AUTH_METHOD: "trust"
+    PG_DSN_CI: "postgres://postgres:postgres@postgres:5432/wallet?sslmode=disable"
+  before_script:
+    - apk add --update make git build-base
+    - export GOPATH=${CI_PROJECT_DIR}/.cache/go
+    - export GOCACHE=${CI_PROJECT_DIR}/.cache/gocache
+    - export CC=gcc
+    - make bin-deps-test
+    - make db-up-ci
+  script:
+    - echo "Run unit tests"
+    - make test_ci
+  coverage: '/^total:\s+\(statements\)\s+\d+.\d+%$/'
+  artifacts:
+    paths:
+      - ./unit-tests.xml
+      - ./json-report.txt
+      - ./cover.out
+    reports:
+      junit: ./unit-tests.xml
+    when: always
+    expire_in: 1 day
+
+create image:
+  stage: publish
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "Create image for dev/stg"
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/DockerFile" --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_BRANCH}"
+  extends: .default-rules
+
+development:
+  stage: deploy
+  script:
+    - echo "Deploy to dev environment"
+  extends: .default-rules
+
+staging:
+  stage: deploy
+  script:
+    - echo "Deploy to stg environment"
+  extends: .default-rules
+
+grpc test:
+  extends: .e2e
+  variables:
+    E2E_TAG: "grpctest"
+
+http test:
+  extends: .e2e
+  variables:
+    E2E_TAG: "httptest"
+
+staging latest:
+  stage: post-deploy
+  script:
+    - echo "Update stg with last version"
+  extends: .default-rules
+
+ready to prod:
+  stage: close
+  script:
+    - echo "Ready to prod"
+  extends: .default-rules
+  when: manual
+
+release image:
+  stage: publish
+  script:
+    - echo "Create image for prod"
+  extends: .tag-rules
+
+production:
+  stage: deploy
+  script:
+    - echo "Deploy to prod environment"
+  extends: .tag-rules
+
+canary 0%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "0"
+    
+canary 1%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "1"
+
+canary 5%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "5"
+
+canary 10%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "10"
+
+canary 20%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "20"
+
+canary 50%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "50"
+
+canary 100%:
+  stage: canary
+  extends: .canary
+  variables:
+    CANARY: "100"
+
+close release:
+  stage: close
+  script:
+    - echo "Close release"
+  extends: .tag-rules
+  when: manual

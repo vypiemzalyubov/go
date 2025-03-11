@@ -1,0 +1,8 @@
+{"tag":"CreateUser", "call": "wallet.Wallet.CreateUser", "payload": {"name": "Fake", "lastname": "Fakovich", "age": 30, "phone": "88889995566", "password": "password123"}}
+{"tag":"UpgradeUser", "call": "wallet.Wallet.UpgradeUser", "payload": {"user_id": "fd48173b-33fb-41dd-a117-ffac43253f63"}, "metadata": {"authorization": "e14d515e-e2ff-4b19-bf29-1088bc7b4943"}}
+{"tag":"LogIn", "call": "wallet.Wallet.LogIn", "payload": {"phone": "88889995566", "password": "password123"}}
+{"tag":"CreateAccount", "call": "wallet.Wallet.CreateAccount", "payload": {"user_id": "fd48173b-33fb-41dd-a117-ffac43253f63", "description": "Main account", "amount": 1000}, "metadata": {"authorization": "e14d515e-e2ff-4b19-bf29-1088bc7b4943"}}
+{"tag":"Debit", "call": "wallet.Wallet.Debit", "payload": {"user_id": "fd48173b-33fb-41dd-a117-ffac43253f63", "accountId": "62914b78-5f50-4ba0-97a8-c89d910cce89", "amount": 500, "operationId": "op123"}, "metadata": {"authorization": "e14d515e-e2ff-4b19-bf29-1088bc7b4943"}}
+{"tag":"Credit", "call": "wallet.Wallet.Credit", "payload": {"user_id": "fd48173b-33fb-41dd-a117-ffac43253f63", "accountId": "62914b78-5f50-4ba0-97a8-c89d910cce89", "amount": 200, "operationId": "op456"}, "metadata": {"authorization": "e14d515e-e2ff-4b19-bf29-1088bc7b4943"}}
+{"tag":"Produce", "call": "wallet.Wallet.Produce", "payload": {"operation": {"operationType": "TYPE_DEBIT", "amount": 500, "accountId": "62914b78-5f50-4ba0-97a8-c89d910cce89", "externalId": "ext_op123"}}}
+{"tag":"Consume", "call": "wallet.Wallet.Consume", "payload": {"count": 10}}

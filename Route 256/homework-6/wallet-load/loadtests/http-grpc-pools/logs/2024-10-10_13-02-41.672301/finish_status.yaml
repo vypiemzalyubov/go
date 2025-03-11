@@ -1,0 +1,19 @@
+exit_code: 1
+left_time: null
+lunapark_id: null
+lunapark_url: null
+status_code: FINISHED
+tank_msg: "plugin_pandora: 2024-10-10T13:02:41.946Z\tERROR\tgrpc/core.go:92\tfailed\
+  \ to get services list\t{\"pool\": \"gRPC pool\", \"error\": \"rpc error: code =\
+  \ Unavailable desc = connection error: desc = \\\"transport: Error while dialing:\
+  \ dial tcp: lookup wallet on 127.0.0.11:53: server misbehaving\\\"\"}\nplugin_pandora:\
+  \ 2024-10-10T13:02:41.946Z\tERROR\tcli/cli.go:177\tEngine run failed. Awaiting started\
+  \ tasks.\t{\"error\": \"\\\"gRPC pool\\\" pool run failed: gun warm up failed: refClient.ListServices\
+  \ err: rpc error: code = Unavailable desc = connection error: desc = \\\"transport:\
+  \ Error while dialing: dial tcp: lookup wallet on 127.0.0.11:53: server misbehaving\\\
+  \"\", \"errorVerbose\": \"gun warm up failed: refClient.ListServices err: rpc error:\
+  \ code = Unavailable desc = connection error: desc = \\\"transport: Error while\
+  \ dialing: dial tcp: lookup wallet on 127.0.0.11:53: server misbehaving\\\"\\n\\\
+  \"gRPC pool\\\" pool run failed\", \"timeout\": \"3s\"}\nplugin_pandora: 2024-10-10T13:02:44.947Z\t\
+  FATAL\tcli/cli.go:180\tEngine tasks timeout exceeded."
+test_id: 2024-10-10_13-02-41.672301

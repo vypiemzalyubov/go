@@ -1,0 +1,26 @@
+# Builder
+
+FROM golang:1.22-alpine AS builder
+RUN apk add --update make curl git protoc protobuf protobuf-dev
+COPY . /app/
+WORKDIR /app/
+RUN make deps && make build
+
+# gRPC Server
+
+FROM alpine:latest as server
+RUN apk --no-cache add ca-certificates
+RUN apk --no-cache add curl
+WORKDIR /root/
+
+COPY --from=builder /app/bin/wallet .
+COPY --from=builder /app/migrations/ ./migrations
+
+RUN chown root:root wallet
+
+EXPOSE 8000
+EXPOSE 8001
+EXPOSE 8002
+EXPOSE 9100
+
+CMD ["./wallet"]

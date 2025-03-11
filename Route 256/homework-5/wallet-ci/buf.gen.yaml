@@ -1,0 +1,39 @@
+version: v1
+plugins:
+    - name: go
+      path: ./bin/protoc-gen-go
+      out: pkg/api
+      opt:
+        - paths=source_relative
+      strategy: directory
+
+    - name: go-grpc
+      path: ./bin/protoc-gen-go-grpc
+      out: pkg/api
+      opt:
+        - paths=source_relative
+      strategy: directory
+
+    - name: grpc-gateway
+      path: ./bin/protoc-gen-grpc-gateway
+      out: pkg/api
+      opt:
+        - logtostderr=true
+        - paths=source_relative
+        - generate_unbound_methods=true
+      strategy: directory
+
+    - name: go-vtproto
+      path: ./bin/protoc-gen-go-vtproto
+      out: pkg/api
+      opt:
+        - features=marshal+unmarshal+size+pool
+        - paths=source_relative
+      strategy: directory
+
+    - name: openapiv2
+      path: ./bin/protoc-gen-openapiv2
+      out: pkg/swagger
+      opt:
+        - generate_unbound_methods=true
+      strategy: directory

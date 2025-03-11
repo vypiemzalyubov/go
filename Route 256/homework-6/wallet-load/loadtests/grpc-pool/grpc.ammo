@@ -1,0 +1,10 @@
+{"tag":"CollectOperation", "call": "wallet.Wallet.CollectOperation", "payload": {}}
+{"tag":"ForceCollectOperation", "call": "wallet.Wallet.ForceCollectOperation", "payload": {}}
+{"tag":"GetUser", "call": "wallet.Wallet.GetUser", "payload": {"user_id": "33fec902-6fe4-428a-bac3-ebed35f22751"}, "metadata": {"authorization": "1f563b9f-8487-4d9e-aede-9d920dfef43f"}}
+{"tag":"GetAccountBalance", "call": "wallet.Wallet.GetAccountBalance", "payload": {"user_id": "33fec902-6fe4-428a-bac3-ebed35f22751", "accountId": "f90a0c72-2919-4c71-bd67-dd980e3710e1"}, "metadata": {"authorization": "1f563b9f-8487-4d9e-aede-9d920dfef43f"}}
+{"tag":"CollectOperation", "call": "wallet.Wallet.CollectOperation", "payload": {}}
+{"tag":"ForceCollectOperation", "call": "wallet.Wallet.ForceCollectOperation", "payload": {}}
+{"tag":"GetUser", "call": "wallet.Wallet.GetUser", "payload": {"user_id": "33fec902-6fe4-428a-bac3-ebed35f22751"}, "metadata": {"authorization": "1f563b9f-8487-4d9e-aede-9d920dfef43f"}}
+{"tag":"GetAccountBalance", "call": "wallet.Wallet.GetAccountBalance", "payload": {"user_id": "33fec902-6fe4-428a-bac3-ebed35f22751", "accountId": "f90a0c72-2919-4c71-bd67-dd980e3710e1"}, "metadata": {"authorization": "1f563b9f-8487-4d9e-aede-9d920dfef43f"}}
+{"tag":"GetUser", "call": "wallet.Wallet.GetUser", "payload": {"user_id": "fake"}, "metadata": {"authorization": "1f563b9f-8487-4d9e-aede-9d920dfef43f"}}
+{"tag":"GetAccountBalance", "call": "wallet.Wallet.GetAccountBalance", "payload": {"user_id": "fake", "accountId": "f90a0c72-2919-4c71-bd67-dd980e3710e1"}, "metadata": {"authorization": "1f563b9f-8487-4d9e-aede-9d920dfef43f"}}

@@ -1,0 +1,9 @@
+apiVersion: 1
+
+datasources:
+  - name: Victoris
+    type: prometheus
+    orgId: 1
+    url: http://victoria:8428
+    isDefault: true
+    editable: false
