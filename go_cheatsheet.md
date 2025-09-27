@@ -22,3 +22,4 @@
 - [Test with Go](https://testwithgo.com/)
 - [Автоматизация тестов на Go + Allure](https://habr.com/ru/companies/vivid_money/articles/566940/)
 - [Пишем gRPC автотесты на Go с Allure отчетом](https://habr.com/ru/articles/736502/)
+- [Интеграционные тесты в Go: как избавиться от флаков и боли](https://habr.com/ru/companies/netologyru/articles/947796/)
