@@ -7,6 +7,7 @@
 - [Самоучитель по Go для начинающих](https://proglib.io/p/samouchitel-po-go-dlya-nachinayushchih-chast-1-osobennosti-i-sfera-primeneniya-go-ustanovka-nastroyka-2023-11-23)
 - [Уроки Go(Golang) | BRO-IT](https://www.youtube.com/playlist?list=PLgG7lPwNdp57aUoqLpR0Rk7Q5v4dFHsjg)
 - [Уроки по Golang | The Art of Development](https://www.youtube.com/playlist?list=PLP19RjSHH4aE9pB77yT1PbXzftGsXFiGl)
+- [GOLINK](https://github.com/faskaded/GOLINK)
 
 #### Полезные материалы
 - [Хаб Go](https://habr.com/ru/hub/go/)
